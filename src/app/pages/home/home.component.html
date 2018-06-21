@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <!--
+    <div class="col-sm">
+      <h2>Como ta a situação da ciclovia de <u>São José dos Campos/SP?</u></h2>
+
+      <p class="lead">
+        Esse mapa foi feito para você que anda de bike postar qualquer incidente que encontrar enquanto estiver dando o rolê.
+      </p>
+
+      <a role="button" href="occurrences" class="btn btn-outline-danger btn-lg">+ inserir ponto no mapa</a>
+
+      <br/> <br/>
+
+    </div> -->
+
+    <div class="col-sm" *ngIf="occurrences">
+
+      <h2>Como ta a situação da ciclovia de sua cidade</h2>
+
+      <p class="lead">
+        Esse mapa foi feito para você que anda de bike postar qualquer incidente que encontrar enquanto estiver dando o rolê.
+      </p>
+
+      <hr />
+
+      <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" >
+
+        <agm-marker *ngFor="let occurrence of occurrences"
+                    [latitude]="occurrence.latitude"
+                    [longitude]="occurrence.longitude"
+                    [iconUrl]="'../assets/images/' + occurrence.status.pinName">
+
+          <agm-info-window>
+            <p><strong> {{occurrence.status.name}}</strong></p>
+            <p><b>quando </b> <strong>{{occurrence.occurrenceDate}}</strong></p>
+            <p><b>onde </b><strong>{{occurrence.location}}</strong></p>
+            <p><b>descrição: </b><strong>{{occurrence.description}}</strong></p>
+            <a href="/occurrences/{{occurrence.id}}"> + ver detalhes </a>
+          </agm-info-window>
+
+        </agm-marker>
+      </agm-map>
+    </div>
+
+  </div>
+</div>
