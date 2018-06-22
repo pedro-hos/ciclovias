@@ -11,7 +11,7 @@ import { OccurrenceService } from '../occurrence/service/occurrence.service';
 
 const homeRouting: ModuleWithProviders = RouterModule.forChild([
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
   }
 ]);
