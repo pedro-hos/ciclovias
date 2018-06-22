@@ -30,7 +30,7 @@
         <agm-marker *ngFor="let occurrence of occurrences"
                     [latitude]="occurrence.latitude"
                     [longitude]="occurrence.longitude"
-                    [iconUrl]="'../assets/images/' + occurrence.status.pinName">
+                    [iconUrl]="'/ciclovias/assets/images/' + occurrence.status.pinName">
 
           <agm-info-window>
             <p><strong> {{occurrence.status.name}}</strong></p>
