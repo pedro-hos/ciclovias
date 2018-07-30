@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  resouceUrl: 'http://localhost:8080/ciclovias/api'
+  resouceUrl: 'http://localhost:8080/api',
+  iconPath: '/assets/images/'
 };

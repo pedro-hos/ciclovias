@@ -17,6 +17,8 @@ import { OccurrenceService } from './pages/occurrence/service/occurrence.service
 import { StatusService } from './pages/occurrence/service/status.service';
 import { TypeService } from './pages/occurrence/service/type.service';
 import { OccurrenceDetailComponent } from './pages/occurrence-detail/occurrence-detail.component';
+import { MessagesComponent } from './messages/messages.component';
+import {MessageService} from './message.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -32,7 +34,8 @@ const rootRouting = RouterModule.forRoot(routes);
     FooterComponent,
     HeaderComponent,
     OccurrenceComponent,
-    OccurrenceDetailComponent
+    OccurrenceDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ const rootRouting = RouterModule.forRoot(routes);
     }),
     ReactiveFormsModule
   ],
-  providers: [OccurrenceService, StatusService, TypeService],
+  providers: [OccurrenceService, StatusService, TypeService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

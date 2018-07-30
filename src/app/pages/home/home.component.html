@@ -1,20 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-
-    <!--
-    <div class="col-sm">
-      <h2>Como ta a situação da ciclovia de <u>São José dos Campos/SP?</u></h2>
-
-      <p class="lead">
-        Esse mapa foi feito para você que anda de bike postar qualquer incidente que encontrar enquanto estiver dando o rolê.
-      </p>
-
-      <a role="button" href="occurrences" class="btn btn-outline-danger btn-lg">+ inserir ponto no mapa</a>
-
-      <br/> <br/>
-
-    </div> -->
-
+    
     <div class="col-sm" *ngIf="occurrences">
 
       <h2>Como ta a situação da ciclovia de sua cidade</h2>
@@ -30,7 +16,7 @@
         <agm-marker *ngFor="let occurrence of occurrences"
                     [latitude]="occurrence.latitude"
                     [longitude]="occurrence.longitude"
-                    [iconUrl]="'/ciclovias/assets/images/' + occurrence.status.pinName">
+                    [iconUrl]="iconPath + occurrence.status.pinName">
 
           <agm-info-window>
             <p><strong> {{occurrence.status.name}}</strong></p>

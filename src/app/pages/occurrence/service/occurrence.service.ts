@@ -6,6 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import { MessageService } from '../../../message.service';
 
 import {Occurrence} from "../model/occurrence.model";
 
@@ -18,26 +19,40 @@ export class OccurrenceService {
 
   private occurrenceUrl = `${environment.resouceUrl}/occurrences`;
 
-  constructor(private http: HttpClient) { }
+  constructor( private messageService: MessageService, private http: HttpClient ) { }
 
   getOccurrences(): Observable<Occurrence[]> {
     return this.http.get<Occurrence[]>(this.occurrenceUrl)
       .pipe(
-        tap(status => console.log(`fetched occurrences`)),
+        tap(status => console.log(`Get Occurrences with status: ${status}`)),
         catchError(this.handleError('getOccurrences', []))
       );
     }
 
+    getOccurrencesById(id: string): Observable<Occurrence> {
+      return this.http.get<Occurrence>(`${this.occurrenceUrl}/${id}`)
+        .pipe(
+          tap(status => console.log(`fetched occurrence by Id`)),
+          catchError(this.handleError('getOccurrencesById', new Occurrence()))
+        );
+      }
+
   addOccurrence(occurrence: Occurrence): Observable<Occurrence> {
     return this.http.post<Occurrence>(this.occurrenceUrl, occurrence, httpOptions).pipe(
-      tap((occurrence: Occurrence) => console.log(`added occurrence w/ id=${occurrence.id}`)),
+      tap((occurrence: Occurrence) => {
+        this.messageService.add("Ocorrência registrado com sucesso!");
+        console.log(`added occurrence w/ id=${occurrence.id}`);
+      }),
       catchError(this.handleError<Occurrence>('addOccurrence'))
     );
   }
 
   upload(formData: FormData): Observable<Occurrence> {
     return this.http.post(this.occurrenceUrl + '/upload', formData).pipe(
-      tap((occurrence: Occurrence) => console.log(`added occurrence w/ id=${occurrence.id}`)),
+      tap((occurrence: Occurrence) => {
+        this.messageService.add("Ocorrência registrado com sucesso!");
+        console.log(`added occurrence w/ id=${occurrence.id}`);
+      }),
       catchError(this.handleError<Occurrence>('addOccurrence'))
     );
   }

@@ -12,27 +12,27 @@
     </div>
 
     <div class="col-lg">
-      <form>
+      <form #occurenceForm="ngForm">
 
         <div class="form-group">
           <label for="nameInput">Seu Nome:</label>
-          <input type="text" [(ngModel)]="occurrence.name" class="form-control" id="nameInput" name="name">
+          <input type="text" required #name="ngModel" [(ngModel)]="occurrence.name" class="form-control" id="nameInput" name="nameInput">
         </div>
 
         <div class="form-group">
           <label for="whereInput">Onde você viu?</label>
-          <input type="text" autocorrect="off" autocapitalize="off" spellcheck="off" #search [formControl]="searchControl" class="form-control">
+          <input id="whereInput" name="whereInput" type="text" required autocorrect="off" autocapitalize="off" spellcheck="off" #search [formControl]="searchControl" class="form-control">
         </div>
 
         <div class="form-group">
-          <label for="whereInput">Foto</label>
-          <input id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
+          <label for="photosInput">Foto</label>
+          <input id="photosInput" required name="photosInput" type="file" (change)="fileChangeEvent($event)" placeholder="Adicione fotos..." multiple />
         </div>
 
         <div class="form-check">
 
           <div *ngFor="let status of statusList">
-            <input type="radio" [(ngModel)]="occurrence.status" class="form-check-input" name="statusRadio" [value]="status" id="{{status.id}}">
+            <input type="radio" required [(ngModel)]="occurrence.status" class="form-check-input" name="statusRadio" [value]="status" id="{{status.id}}">
             <label class="form-check-label" for="maintenanceRadio">{{status.name}}</label>
           </div>
 
@@ -40,7 +40,7 @@
 
         <div class="form-group">
           <label for="TypeCombo">Tipo</label>
-          <select class="form-control" [(ngModel)]="occurrence.type" name="type" id="TypeCombo">
+          <select required class="form-control" [(ngModel)]="occurrence.type" name="type" id="TypeCombo">
             <option *ngFor="let type of typeList" [ngValue]="type">{{type.name}}</option>
           </select>
       </div>
@@ -50,7 +50,7 @@
           <input type="text" [(ngModel)]="occurrence.description" class="form-control" id="descriptionInput" name="description">
         </div>
 
-        <button type="submit" (click)="save()" class="btn btn-outline-danger btn-lg"> + Inserir ponto</button>
+        <button type="submit" (click)="save(); occurenceForm.reset()" [disabled]="!occurenceForm.form.valid" class="btn btn-outline-danger btn-lg"> + Inserir ponto</button>
       </form>
     </div>
 
