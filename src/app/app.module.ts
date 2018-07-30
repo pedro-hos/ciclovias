@@ -19,11 +19,13 @@ import { TypeService } from './pages/occurrence/service/type.service';
 import { OccurrenceDetailComponent } from './pages/occurrence-detail/occurrence-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import {MessageService} from './message.service';
+import { WhoamiComponent } from './pages/whoami/whoami.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'occurrences', component: OccurrenceComponent },
-  { path: 'occurrences/:id', component: OccurrenceDetailComponent }
+  { path: 'occurrences/:id', component: OccurrenceDetailComponent },
+  { path: 'whoami', component: WhoamiComponent },
 ];
 
 const rootRouting = RouterModule.forRoot(routes);
@@ -35,7 +37,8 @@ const rootRouting = RouterModule.forRoot(routes);
     HeaderComponent,
     OccurrenceComponent,
     OccurrenceDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    WhoamiComponent
   ],
   imports: [
     BrowserModule,
