@@ -40,7 +40,7 @@ export class OccurrenceService {
   addOccurrence(occurrence: Occurrence): Observable<Occurrence> {
     return this.http.post<Occurrence>(this.occurrenceUrl, occurrence, httpOptions).pipe(
       tap((occurrence: Occurrence) => {
-        this.messageService.add("Ocorrência registrada com sucesso!");
+        this.messageService.add("Ocorrência registrada com sucesso!", 'alert-success');
         console.log(`added occurrence w/ id=${occurrence.id}`);
       }),
       catchError(this.handleError<Occurrence>('addOccurrence'))
@@ -50,7 +50,7 @@ export class OccurrenceService {
   upload(formData: FormData): Observable<Occurrence> {
     return this.http.post(this.occurrenceUrl + '/upload', formData).pipe(
       tap((occurrence: Occurrence) => {
-        this.messageService.add("Ocorrência registrado com sucesso!");
+        this.messageService.add("Ocorrência registrado com sucesso!", 'alert-success');
         console.log(`added occurrence w/ id=${occurrence.id}`);
       }),
       catchError(this.handleError<Occurrence>('addOccurrence'))
@@ -64,6 +64,7 @@ export class OccurrenceService {
    * @param result - optional value to return as the observable result
    */
   private handleError<T> (operation = 'operation', result?: T) {
+
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure

@@ -20,12 +20,14 @@ import { OccurrenceDetailComponent } from './pages/occurrence-detail/occurrence-
 import { MessagesComponent } from './messages/messages.component';
 import {MessageService} from './message.service';
 import { WhoamiComponent } from './pages/whoami/whoami.component';
+import { FeedbackComponent } from './pages/feedback/feedback.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'occurrences', component: OccurrenceComponent },
   { path: 'occurrences/:id', component: OccurrenceDetailComponent },
   { path: 'whoami', component: WhoamiComponent },
+  { path: 'feedback', component: FeedbackComponent }
 ];
 
 const rootRouting = RouterModule.forRoot(routes);
@@ -38,7 +40,8 @@ const rootRouting = RouterModule.forRoot(routes);
     OccurrenceComponent,
     OccurrenceDetailComponent,
     MessagesComponent,
-    WhoamiComponent
+    WhoamiComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
