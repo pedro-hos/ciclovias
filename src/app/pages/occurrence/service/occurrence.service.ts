@@ -40,7 +40,7 @@ export class OccurrenceService {
   addOccurrence(occurrence: Occurrence): Observable<Occurrence> {
     return this.http.post<Occurrence>(this.occurrenceUrl, occurrence, httpOptions).pipe(
       tap((occurrence: Occurrence) => {
-        this.messageService.add("Ocorrência registrado com sucesso!");
+        this.messageService.add("Ocorrência registrada com sucesso!");
         console.log(`added occurrence w/ id=${occurrence.id}`);
       }),
       catchError(this.handleError<Occurrence>('addOccurrence'))
