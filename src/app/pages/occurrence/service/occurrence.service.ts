@@ -47,8 +47,13 @@ export class OccurrenceService {
     );
   }
 
-  upload(formData: FormData): Observable<Occurrence> {
-    return this.http.post(this.occurrenceUrl + '/upload', formData).pipe(
+  upload(formData: FormData, login:string, password:string): Observable<Occurrence> {
+
+    let authHeader = {
+      headers: new HttpHeaders({ 'Authorization': `Basic ${btoa(login + ':' + password)}` })
+    };
+
+    return this.http.post(this.occurrenceUrl + '/upload', formData, authHeader).pipe(
       tap((occurrence: Occurrence) => {
         this.messageService.add("Ocorrência registrado com sucesso!", 'alert-success');
         console.log(`added occurrence w/ id=${occurrence.id}`);

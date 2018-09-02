@@ -17,11 +17,25 @@
         <div class="form-group">
           <label for="nameInput">Seu Nome:</label>
           <input type="text" required #name="ngModel" [(ngModel)]="occurrence.name" class="form-control" id="nameInput" name="nameInput">
+          <small class="form-text text-muted">Quem está reportando o problema?</small>
+        </div>
+
+        <div class="form-group">
+          <label for="loginInput">Login:</label>
+          <input type="text" required [(ngModel)]="login" class="form-control" id="loginInput" name="loginInput">
+          <small class="form-text text-muted">Login de administrador</small>
+        </div>
+
+        <div class="form-group">
+          <label for="passwordInput">Senha:</label>
+          <input type="password" required [(ngModel)]="password" class="form-control" id="passwordInput" name="passwordInput">
+          <small class="form-text text-muted">Senha de administrador</small>
         </div>
 
         <div class="form-group">
           <label for="whereInput">Onde você viu?</label>
           <input id="whereInput" name="whereInput" type="text" required autocorrect="off" autocapitalize="off" spellcheck="off" #search [formControl]="searchControl" class="form-control">
+          <small class="form-text text-muted">caso consiga, coloque um número próximo para ajudar na localização</small>
         </div>
 
         <div class="form-group">
