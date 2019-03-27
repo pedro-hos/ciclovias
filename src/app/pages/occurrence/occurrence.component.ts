@@ -31,8 +31,8 @@ export class OccurrenceComponent implements OnInit {
   public latitude: number;
   public longitude: number;
   public address: string;
-  public login: string;
-  public password: string;
+  //public login: string;
+  //public password: string;
   public searchControl: FormControl;
   public zoom: number;
 
@@ -53,8 +53,8 @@ export class OccurrenceComponent implements OnInit {
     this.latitude = 39.52365;
     this.longitude = -87.12502;
     this.address = '';
-    this.login = '';
-    this.password = '';
+    //this.login = '';
+    //this.password = '';
 
     //create search FormControl
     this.searchControl = new FormControl();
@@ -109,8 +109,8 @@ export class OccurrenceComponent implements OnInit {
         formData.append("uploads", files[i], files[i]['name']);
     }
 
-    this.occurrenceService.upload(formData, this.login, this.password).subscribe();
-
+    //this.occurrenceService.upload(formData, this.login, this.password).subscribe();
+    this.occurrenceService.upload(formData).subscribe();
   }
 
   fileChangeEvent(fileInput: any) {

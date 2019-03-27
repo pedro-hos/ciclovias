@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AgmCoreModule } from '@agm/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -53,6 +54,7 @@ const rootRouting = RouterModule.forRoot(routes);
       apiKey: "AIzaSyDGNfRsZrh7nbJ6s8KlVFx7coXXv2cUJw0",
       libraries: ["places"]
     }),
+    NgbModule,
     ReactiveFormsModule
   ],
   providers: [OccurrenceService, StatusService, TypeService, MessageService],

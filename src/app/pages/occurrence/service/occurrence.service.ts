@@ -47,6 +47,18 @@ export class OccurrenceService {
     );
   }
 
+  upload(formData: FormData): Observable<Occurrence> {
+
+    return this.http.post(this.occurrenceUrl + '/upload', formData).pipe(
+      tap((occurrence: Occurrence) => {
+        this.messageService.add("Ocorrência registrado com sucesso!", 'alert-success');
+        console.log(`added occurrence w/ id=${occurrence.id}`);
+      }),
+      catchError(this.handleError<Occurrence>('addOccurrence'))
+    );
+  }
+
+  /**
   upload(formData: FormData, login:string, password:string): Observable<Occurrence> {
 
     let authHeader = {
@@ -61,6 +73,7 @@ export class OccurrenceService {
       catchError(this.handleError<Occurrence>('addOccurrence'))
     );
   }
+  **/
 
   /**
    * Handle Http operation that failed.

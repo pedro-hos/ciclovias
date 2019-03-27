@@ -5,33 +5,37 @@
     <div class="col-sm">
       <ul class="list-inline">
         <li class="list-inline-item"><img src="{{iconPath + occurrence.status.pinName}}" width="20"/></li>
-        <li class="list-inline-item">{{occurrence.status.name}}</li>
+        <li class="list-inline-item">
+          <strong> {{occurrence.status.name}}</strong>
+        </li>
       </ul>
 
       <dl class="row">
-        <dt class="col-sm-3">Quando</dt>
-        <dd class="col-sm-9">{{occurrence.occurrenceDate}}</dd>
 
-        <dt class="col-sm-3">Local</dt>
+        <dt class="col-sm-3">Onde</dt>
         <dd class="col-sm-9">{{occurrence.location}}</dd>
 
-        <dt class="col-sm-3">Detalhes</dt>
+        <dt class="col-sm-3">O que foi observado?</dt>
+        <dd class="col-sm-9">{{occurrence.status.name}}</dd>
+
+        <dt class="col-sm-3">Comentários</dt>
         <dd class="col-sm-9">{{occurrence.description}}</dd>
 
         <dt class="col-sm-3">Registrado por</dt>
-        <dd class="col-sm-9">{{occurrence.name}}</dd>
+        <dd class="col-sm-9">{{occurrence.name}} em {{occurrence.occurrenceDate}}</dd>
 
       </dl>
 
     </div>
 
-    <div class="col-lg">
+    <div class="col-sm">
 
-        <div class="col" *ngFor="let image of occurrence.pathPhoto">
-          <a href="{{image}}">
-            <img  src="{{image}}" class="img-thumbnail">
-          </a>
-        </div>
+      <ngb-carousel *ngIf="occurrence.pathPhoto" style="height:500px; width:auto; max-width:500px">
+        <ng-template *ngFor="let image of occurrence.pathPhoto" ngbSlide>
+          <img [src]="image" style="height:500px; width:auto; max-width:500px;">
+        </ng-template>
+      </ngb-carousel>
+
     </div>
 
   </div>
