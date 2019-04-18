@@ -11,7 +11,7 @@ import { MessageService } from '../../../message.service';
 import {Occurrence} from "../model/occurrence.model";
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json;charset=utf-8' })
 };
 
 @Injectable()
